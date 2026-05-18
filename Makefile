@@ -1,5 +1,5 @@
 CC=gcc
-LDFLAGS=`pkg-config --cflags --libs gtk4`
+LDFLAGS=``
 FILES=src/*
 
 main.o: $(FILES)
