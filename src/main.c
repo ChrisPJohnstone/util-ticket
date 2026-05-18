@@ -1,10 +1,16 @@
 #include <stdbool.h>
 #include <stdio.h>
+#include <string.h>
 #include <unistd.h>
 
 void print_usage() {
     printf("Usage: program [arguments]\n");
     printf("Provide arguments or input through stdin.\n");
+}
+
+void open_ticket(char *arg) {
+    printf("Opening ticket for: %s\n", arg);
+    // Simulate ticket opening logic here
 }
 
 int main(int argc, char *argv[]) {
@@ -13,13 +19,14 @@ int main(int argc, char *argv[]) {
     if (argc > 1) {
         has_input = true;
         for (int i = 1; i < argc; i++) {
-            printf("Argument %d: %s\n", i, argv[i]);
+            open_ticket(argv[i]);
         }
     }
     if (!isatty(0)) {
         has_input = true;
         while (fgets(line, sizeof(line), stdin)) {
-            printf("Input: %s", line);
+            line[strcspn(line, "\n")] = '\0';
+            open_ticket(line);
         }
     }
     if (!has_input) {
