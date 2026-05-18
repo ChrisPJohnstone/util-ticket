@@ -36,5 +36,7 @@ printf '%s\n' 123 ABC-456 | ./ticket ABC-789 ZYX-987
 - [x] Support reading configuration from envars
 - [ ] Support reading configuration from a file
 - [ ] Figure out packaging and distribution
+    - [ ] Arch Linux
+    - [ ] Homebrew
 - [ ] Man pages
 - [ ] Tests
