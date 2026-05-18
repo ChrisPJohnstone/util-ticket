@@ -3,3 +3,6 @@ IndentWidth: 4
 BinPackArguments: false
 AllowAllArgumentsOnNextLine: false
 PenaltyBreakBeforeFirstCallParameter: 0
+BinPackParameters: false
+AlignAfterOpenBracket: BlockIndent
+AllowAllParametersOfDeclarationOnNextLine: false
