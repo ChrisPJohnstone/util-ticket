@@ -17,16 +17,16 @@ A simple utility script to open Jira tickets from the command line.
 
 ```sh
 # Open a ticket with the default project key
-ticket 123
+./ticket 123
 
 # Open a ticket with a specific project key
-ticket ABC-123
+./ticket ABC-123
 
 # Provide args over stdin
-printf '%s\n' 123 ABC-456 | ticket
+printf '%s\n' 123 ABC-456 | ./ticket
 
 # Open multiple tickets
-printf '%s\n' 123 ABC-456 | ticket ABC-789 ZYX-987
+printf '%s\n' 123 ABC-456 | ./ticket ABC-789 ZYX-987
 ```
 
 ## Features
