@@ -10,7 +10,7 @@
 #define ENVAR_DEFAULT_PROJECT "JIRA_DEFAULT_PROJECT"
 
 void print_usage() {
-    printf("Usage: program [arguments]\n");
+    printf("Usage: program [TICKET_ID]\n");
     printf("Provide arguments or input through stdin.\n");
 }
 
