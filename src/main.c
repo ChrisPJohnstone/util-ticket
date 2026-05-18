@@ -1,11 +1,39 @@
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+
+#define ENVAR_COMMAND "BROWSER"
+#define ENVAR_BASE_URL "JIRA_BASE_URL"
 
 void print_usage() {
     printf("Usage: program [arguments]\n");
     printf("Provide arguments or input through stdin.\n");
+}
+
+char *get_command() {
+    const char *command = getenv(ENVAR_COMMAND);
+    if (command) {
+        return strdup(command);
+    }
+    printf("Error: Environment variable %s not set.\n", ENVAR_COMMAND);
+    exit(1);
+}
+
+char *get_base_url() {
+    // TODO: Support config
+    const char *command = getenv(ENVAR_BASE_URL);
+    if (command) {
+        return strdup(command);
+    }
+    printf("Error: Environment variable %s not set.\n", ENVAR_BASE_URL);
+    exit(1);
+}
+
+char *get_default_project() {
+    // TODO: Support config
+    return NULL;
 }
 
 void open_ticket(char *arg) {
@@ -14,6 +42,14 @@ void open_ticket(char *arg) {
 }
 
 int main(int argc, char *argv[]) {
+    char *command = get_command();
+    char *base_url = get_base_url();
+    char *default_project = get_default_project();
+    printf("Command: %s\nBase URL: %s\nDefault Project: %s\n",
+           command,
+           base_url,
+           default_project);
+
     bool has_input = false;
     char line[256];
     if (argc > 1) {
