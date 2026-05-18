@@ -1,3 +1,4 @@
+#include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -42,13 +43,27 @@ char *get_default_project() {
 }
 
 void open_ticket(
-    char *arg,
+    char *ticket,
     char *command,
     char *base_url,
     char *default_project
 ) {
-    printf("Opening ticket for: %s\n", arg);
-    // Simulate ticket opening logic here
+    char *full_id;
+    if (isdigit(ticket[0])) {
+        if (!default_project) {
+            printf("Error: Project unspecified and default project not set.\n");
+            exit(1);
+        }
+        asprintf(&full_id, "%s-%s", default_project, ticket);
+    } else {
+        full_id = strdup(ticket);
+    }
+    char *url;
+    asprintf(&url, "%s/browse/%s", base_url, full_id);
+    char *final_command;
+    asprintf(&final_command, "%s %s", command, url);
+    system(final_command);
+    free(full_id);
 }
 
 int main(int argc, char *argv[]) {
