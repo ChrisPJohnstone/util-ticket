@@ -9,12 +9,12 @@
 #define ENVAR_BASE_URL "JIRA_BASE_URL"
 #define ENVAR_DEFAULT_PROJECT "JIRA_DEFAULT_PROJECT"
 
-void print_usage() {
+void print_usage(void) {
     printf("Usage: program [TICKET_ID]\n");
     printf("Provide arguments or input through stdin.\n");
 }
 
-char *get_command() {
+char *get_command(void) {
     const char *command = getenv(ENVAR_COMMAND);
     if (command) {
         return strdup(command);
@@ -23,7 +23,7 @@ char *get_command() {
     exit(1);
 }
 
-char *get_base_url() {
+char *get_base_url(void) {
     // TODO: Support config
     const char *command = getenv(ENVAR_BASE_URL);
     if (command) {
@@ -33,7 +33,7 @@ char *get_base_url() {
     exit(1);
 }
 
-char *get_default_project() {
+char *get_default_project(void) {
     // TODO: Support config
     const char *command = getenv(ENVAR_DEFAULT_PROJECT);
     if (command) {
